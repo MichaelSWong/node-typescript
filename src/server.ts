@@ -1,13 +1,10 @@
-import express, { Application, Request, Response, NextFunction } from 'express';
+import dotenv from 'dotenv';
 
-// Boot express
-const app: Application = express();
-const port = 5000;
+import { app } from './app';
 
-// Application routing
-app.use('/', (req: Request, res: Response, next: NextFunction) => {
-  res.status(200).send({ data: 'Hello from Michael' });
-});
+dotenv.config();
+
+const Server_Port = process.env.SERVER_PORT || 5000;
 
 // Start server
-app.listen(port, () => console.log(`Server is listening on port ${port}!`));
+app.listen(Server_Port, () => console.log(`Server is listening on port ${Server_Port}!`));
